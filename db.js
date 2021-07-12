@@ -2,7 +2,7 @@ const mysql = require("mysql2/promise");
 
 const pool = mysql.createPool({
   user: "root",
-  password: "YOUR PASSWORD",
+  password: process.env.MYSQL_PASSWORD,
   host: "localhost",
   database: "bittybaking",
 });
