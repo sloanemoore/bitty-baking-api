@@ -14,7 +14,7 @@ If you do not already have Node installed, you can download it here: https://nod
 
 You will need MySQL to run the Bitty Baking API. If you do not already have it installed on your computer, you can download it here: https://www.mysql.com/downloads/
 
-## Quick-start Guide
+## Quick-Start Guide
 
 1. Clone the Bitty Baking API repo.
 
