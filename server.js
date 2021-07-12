@@ -152,7 +152,7 @@ app.patch("/orders/:orderId", async (req, res) => {
       res.json({ error: "orderId not found in orders" });
     }
     if (!customerName && !itemId) {
-      res.json({ error: "Provide a customer and / or itemId to update" });
+      res.json({ error: "Provide a customerName and / or itemId to update" });
     }
     if (customerName) {
       const updateCustomerName = await pool.query(
