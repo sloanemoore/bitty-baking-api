@@ -24,7 +24,7 @@ You will need MySQL to run the Bitty Baking API. If you do not already have it i
 
 4. Run the MySQL commands in the database.sql file to create the MySQL database.
 
-5. Start your server. If you installed nodemon, you can do this by running the command: `npm run start`.
+5. Run the command `npm start` to start your server.
 
 - In your browser, navigate to http://localhost:5000/ You should see the greeting: “Welcome to the Bitty Baking API!”
 
