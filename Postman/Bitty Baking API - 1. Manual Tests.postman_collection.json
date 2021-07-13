@@ -42,7 +42,7 @@
 					"query": [
 						{
 							"key": "itemType",
-							"value": "cookie",
+							"value": "cupcake",
 							"disabled": true
 						}
 					]
@@ -69,7 +69,7 @@
 					"variable": [
 						{
 							"key": "itemId",
-							"value": "3"
+							"value": "1"
 						}
 					]
 				}
@@ -83,7 +83,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customerName\": \"{{$randomFullName}}\",\n    \"itemId\": \"2\"\n}",
+					"raw": "{\n    \"customerName\": \"{{$randomFullName}}\",\n    \"itemId\": \"3\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
