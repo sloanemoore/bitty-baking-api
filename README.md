@@ -8,7 +8,7 @@ The Bitty Baking API uses Node, Express, and MySQL to query a database of menu i
 
 Here is a video of the Postman tests that were run on the Bitty Baking API.
 
-![Bitty Baking API - Testing with Postman](images/Bitty-Baking-API-Postman-Testing-Cover.png "Bitty Baking API - Testing with Postman")
+<a href="https://www.youtube.com/watch?v=Gc6dr-wa6Uc">![Bitty Baking API - Testing with Postman](images/Bitty-Baking-API-Postman-Testing-Cover.png "Bitty Baking API - Testing with Postman")</a>
 
 ## Prerequisites
 
