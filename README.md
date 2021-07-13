@@ -127,7 +127,7 @@ Example:
 
 ```
 {
-    "customerName": "Jane",
+    "customerName": "Jane Stewart",
     "itemId": "2"
 }
 ```
