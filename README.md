@@ -4,6 +4,12 @@
 
 The Bitty Baking API uses Node, Express, and MySQL to query a database of menu items and orders on your computer.
 
+## Testing with Postman
+
+Here is a video of the Postman tests that were run on the Bitty Baking API.
+
+![Bitty Baking API - Testing with Postman](images/Bitty-Baking-API-Postman-Testing-Cover.png "Bitty Baking API - Testing with Postman")
+
 ## Prerequisites
 
 ### Node.js
@@ -20,11 +26,9 @@ You will need MySQL to run the Bitty Baking API. If you do not already have it i
 
 2. In the root folder, run `npm install`.
 
-3. In the db.js file, replace the environment variable with your MySQL password.
+3. Run the MySQL commands in the database.sql file to create the MySQL database.
 
-4. Run the MySQL commands in the database.sql file to create the MySQL database.
-
-5. Run the command `npm start` to start your server.
+4. Run the command `MYSQL_PASSWORD="YOUR MYSQL PASSWORD" npm start` to start your server.
 
 - In your browser, navigate to http://localhost:5000/ You should see the greeting: “Welcome to the Bitty Baking API!”
 
@@ -39,6 +43,14 @@ You will need MySQL to run the Bitty Baking API. If you do not already have it i
 GET `/status`\
 Returns the status of the Bitty Baking API.
 
+Example of API response:
+
+```
+{
+    "status": 200
+}
+```
+
 ### Get all menu items
 
 GET `/menu`\
@@ -48,6 +60,38 @@ Optional query parameter:
 
 - itemType: cookie or cupcake
 
+Example of API response:
+
+```
+[
+    {
+        "itemId": 1,
+        "itemName": "chocolate chip cookie",
+        "itemType": "cookie"
+    },
+    {
+        "itemId": 2,
+        "itemName": "sugar cookie",
+        "itemType": "cookie"
+    },
+    {
+        "itemId": 3,
+        "itemName": "lemon cookie",
+        "itemType": "cookie"
+    },
+    {
+        "itemId": 4,
+        "itemName": "chocolate cupcake",
+        "itemType": "cupcake"
+    },
+    {
+        "itemId": 5,
+        "itemName": "vanilla cupcake",
+        "itemType": "cupcake"
+    }
+]
+```
+
 ### Get a single menu item
 
 GET `/menu/:itemId`\
@@ -56,6 +100,18 @@ Returns a single menu item.
 Required path variable:
 
 - itemId
+
+Example of API response:
+
+```
+[
+    {
+        "itemId": 3,
+        "itemName": "lemon cookie",
+        "itemType": "cookie"
+    }
+]
+```
 
 ### Create an order
 
@@ -85,10 +141,40 @@ Required path variable:
 
 - orderId
 
+Example of API response:
+
+```
+{
+    "orderId": 1,
+    "customerName": "Candace Heller",
+    "itemId": 4,
+    "itemName": "chocolate cupcake"
+}
+```
+
 ### Get all orders
 
 GET `/orders`\
 Returns a list of all orders.
+
+Example of API response:
+
+```
+[
+    {
+        "orderId": 1,
+        "customerName": "Rosemarie Koch",
+        "itemId": 1,
+        "itemName": "chocolate chip cookie"
+    },
+    {
+        "orderId": 2,
+        "customerName": "Gerald Schamberger",
+        "itemId": 3,
+        "itemName": "lemon cookie"
+    }
+]
+```
 
 ### Update an order
 
@@ -105,6 +191,17 @@ The body must be formatted in JSON and contain a customerName or itemId. Both pa
 - customerName
 - itemId
 
+Example of API response:
+
+```
+{
+    "orderId": 3,
+    "customerName": "Benny Sawayn",
+    "itemId": 4,
+    "itemName": "chocolate cupcake"
+}
+```
+
 ### Delete an order
 
 DELETE `/orders/:orderId`\
@@ -113,3 +210,5 @@ Deletes an order.
 Required path variable:
 
 - orderId
+
+Note: A delete request returns a status code 204.

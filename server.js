@@ -35,7 +35,7 @@ app.get("/menu", async (req, res) => {
       if (menu[0].length) {
         res.status(200).json(menu[0]);
       } else {
-        res.json({ error: "itemType not found in menu" });
+        res.status(404).json({ error: "itemType not found in menu" });
       }
     } else {
       const menu = await pool.query("SELECT * FROM menu");
@@ -56,7 +56,7 @@ app.get("/menu/:itemId", async (req, res) => {
     if (menuItem[0].length) {
       res.status(200).json(menuItem[0]);
     } else {
-      res.json({ error: "itemId not found in menu" });
+      res.status(404).json({ error: "itemId not found in menu" });
     }
   } catch (error) {
     res.render("error", { error: err });
@@ -68,7 +68,7 @@ app.post("/orders", async (req, res) => {
   try {
     const { customerName, itemId } = req.body;
     if (!customerName || !itemId) {
-      res.json({ error: "customerName and itemId cannot be null" });
+      res.status(400).json({ error: "customerName and itemId cannot be null" });
     } else {
       const menuItem = await pool.query("SELECT * FROM menu WHERE itemId = ?", [
         itemId,
@@ -87,7 +87,7 @@ app.post("/orders", async (req, res) => {
         let itemName = menuItemName[0][0]["itemName"];
         res.status(201).json({ orderId, customerName, itemId, itemName });
       } else {
-        res.json({ error: "itemId not found in menu" });
+        res.status(404).json({ error: "itemId not found in menu" });
       }
     }
   } catch (error) {
@@ -149,10 +149,12 @@ app.patch("/orders/:orderId", async (req, res) => {
       orderId,
     ]);
     if (order[0].length === 0) {
-      res.json({ error: "orderId not found in orders" });
+      res.status(404).json({ error: "orderId not found in orders" });
     }
     if (!customerName && !itemId) {
-      res.json({ error: "Provide a customerName and / or itemId to update" });
+      res
+        .status(400)
+        .json({ error: "Provide a customerName and / or itemId to update" });
     }
     if (customerName) {
       const updateCustomerName = await pool.query(
